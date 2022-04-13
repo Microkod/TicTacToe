@@ -54,15 +54,53 @@ public class TicTacToe implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        for (int i = 0; i < 9; i++) {
+            if (e.getSource() == buttons[i]) {
+                if (player1Turn) {
+                    if (buttons[i].getText() == "") {
+                        buttons[i].setForeground(new Color(255, 0, 0));
+                        buttons[i].setText("X");
+                        player1Turn = false;
+                        textField.setText("O TURN");
+                        check();
+                    }
+                } else {
+                    if (buttons[i].getText() == "") {
+                        buttons[i].setForeground(new Color(0, 0, 255));
+                        buttons[i].setText("O");
+                        player1Turn = true;
+                        textField.setText("X TURN");
+                        check();
+                    }
+                }
+            }
+        }
+
     }
 
     public void firstTurn() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        if (random.nextInt(2) == 0) {
+            player1Turn = true;
+            textField.setText("X TURN");
 
+        } else {
+            player1Turn = true;
+            textField.setText("O TURN");
+        }
 
     }
 
     public void check() {
+
+        //check X win conditions
+
+        //check O win conditions
 
     }
 
